@@ -50,10 +50,7 @@ public class Main {
             }
         }
 
-        if(sum == number){
-            return true;
-        }
-        return false;
+        return sum == number;
 
     }
 
