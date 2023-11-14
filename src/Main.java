@@ -1,3 +1,5 @@
+import static java.lang.Math.*;
+
 public class Main {
     public static void main(String[] args) {
 
@@ -8,7 +10,7 @@ public class Main {
         System.out.println("-----------Mükemmel Sayıları Bulma--------");
         System.out.println(isPerfectNumber(6));
         System.out.println(isPerfectNumber(28));
-        System.out.println(isPerfectNumber(5);
+        System.out.println(isPerfectNumber(5));
         System.out.println(isPerfectNumber(-1));
         System.out.println("--------Sayıları Kelimelere Dök--------");
         System.out.println(numberToWords(123));
@@ -17,7 +19,22 @@ public class Main {
     }
 
     public static boolean isPalindrome(int number){
-               return true;
+
+        if(number < 0 ) {
+            number = abs(number);
+        }
+        
+        int originalNum = number;
+        int reversed = 0;
+
+        while (number != 0){
+            int digit = number %10;
+            reversed = reversed * 10 + digit;
+            number /= 10;
+        }
+
+        return originalNum == reversed;
+
     }
 
     public static boolean isPerfectNumber(int number){
@@ -41,10 +58,21 @@ public class Main {
     }
 
     public static String numberToWords(int number){
+
         if(number < 0){
             return "Invalid Value";
-        }else{
-
         }
+
+        String[] digits = new String[] {"Zero", "One", "Two", "Three", "Four","Five", "Six", "Seven", "Eight", "Nine" };
+
+        String result = "";
+
+        for (char digit : String.valueOf(number).toCharArray()) {
+            int digitValue = Character.getNumericValue(digit);
+            result += digits[digitValue] + " ";
+        }
+
+        return result.trim();
+
     }
 }
